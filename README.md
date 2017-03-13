@@ -29,3 +29,8 @@ angular2中使用[typescript](https://www.tslang.cn/docs/tutorial.html)较为契
  ![](https://github.com/MonetWang/angular-tour-of-heroes/blob/master/img/1.png)
 3.  当前工程下，在编译器的控制台，输入`npm install`下载库文件，成功后目录会有`node_modules`文件夹生成。
 4.  接着输入`npm start`,等待一段时间后，会自动跳转至浏览器页面则表示start成功。在编写完代码后，直接刷新浏览器就可以看到效果啦~
+
+
+### 更新日期
+***
+2017/3/13  源码更新至`路由`
