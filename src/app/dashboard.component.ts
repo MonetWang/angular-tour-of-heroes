@@ -6,8 +6,8 @@ import { HeroService } from './hero.service';
 @Component({
     moduleId: module.id,
     selector: 'my-dashboard',
-    template: `./dashboard.component.html`,
-    styleUrls: [ './heroes.component.css']
+    templateUrl: '/app/dashboard.component.html',
+    styleUrls: [ './dashboard.component.css']
 })
 
 export class DashboardComponent implements OnInit{

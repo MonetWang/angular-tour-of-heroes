@@ -1,5 +1,5 @@
 /**
- * Created by wangmengni on 2017/3/7.
+ * Created by Monet on 2017/3/7.
  */
 import 'rxjs/add/operator/switchMap';
 import {Component, OnInit} from '@angular/core';
@@ -14,6 +14,7 @@ import { HeroService } from './hero.service';
     moduleId: module.id,
     selector: 'my-hero-detail',
     templateUrl:'./hero-detail.component.html',
+    styleUrls:['./hero-detail.component.css']
 })
 
 export class HeroDetailComponent implements OnInit{

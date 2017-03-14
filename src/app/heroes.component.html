@@ -1,0 +1,39 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes"
+        [class.selected]="hero === selectedHero"
+        (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+<div *ngIf="selectedHero">
+    <h2>
+        {{selectedHero.name | uppercase}} is my hero
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>
+
+<!--template: `
+<h1>{{title}}</h1>
+&lt;!&ndash; 这个组件被单独抽调出来
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name}} details</h2>
+  <div><label>id: </label>{{selectedHero.id}}</div>
+  <div>
+      <label>name: </label>
+      <input [(ngModel)]="hero.name" placeholder="name">
+  </div>
+</div>&ndash;&gt;
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heros"
+        [class.selected]="hero === selectedHero"
+        (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+&lt;!&ndash; my-hero-detail是在HeroDetailComponet元数据中的selector属性所指定的名字。
+     想要两个组件协同工作，把AppComponent组件的selector属性和HeroDetailComponet组件中的hero属性绑定。
+ &ndash;&gt;
+<my-hero-detail [hero]="selectedHero"></my-hero-detail>
+`,-->

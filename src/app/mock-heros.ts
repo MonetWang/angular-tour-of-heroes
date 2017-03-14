@@ -1,9 +1,9 @@
 /**
- * Created by wangmengni on 2017/3/8.
+ * Created by Monet on 2017/3/8.
  */
 import {Hero} from "./hero";
 
-export const HEROES:Hero[] = [
+export var HEROES:Hero[] = [
         {id: 11, name: 'Mr.Nice'},
         {id: 12, name: 'Narco'},
         {id: 13, name: 'Bombasto'},
