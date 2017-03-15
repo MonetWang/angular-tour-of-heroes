@@ -1,32 +1,53 @@
-import { Component,OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router }            from '@angular/router';
 
-import {Hero} from "./hero";
-import {HeroService} from "./hero.service";
+import { Hero }                from './hero';
+import { HeroService }         from './hero.service';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-heroes',
-    templateUrl:'/app/heroes.component.html',
-    styles: ['./heroes.component.css']
+    templateUrl: './heroes.component.html',
+    styleUrls: [ './heroes.component.css' ]
 })
-
-export class HeroesComponent implements OnInit{
+export class HeroesComponent implements OnInit {
     heroes: Hero[];
     selectedHero: Hero;
 
-    //添加一个构造函数，并定义一个私有属性
-    //添加组件的providers元数据
-    constructor(private router:Router,private heroService:HeroService){}
+    constructor(
+        private heroService: HeroService,
+        private router: Router) { }
 
-    getHeroes():void{
-        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    getHeroes(): void {
+        this.heroService
+            .getHeroes()
+            .then(heroes => this.heroes = heroes);
     }
 
-    ngOnInit():void{
+    add(name: string): void {
+        name = name.trim();
+        if (!name) { return; }
+        this.heroService.create(name)
+            .then(hero => {
+                this.heroes.push(hero);
+                this.selectedHero = null;
+            });
+    }
+
+    delete(hero: Hero): void {
+        this.heroService
+            .delete(hero.id)
+            .then(() => {
+                this.heroes = this.heroes.filter(h => h !== hero);
+                if (this.selectedHero === hero) { this.selectedHero = null; }
+            });
+    }
+
+    ngOnInit(): void {
         this.getHeroes();
     }
 
-    onSelect(hero:Hero):void {
+    onSelect(hero: Hero): void {
         this.selectedHero = hero;
     }
 
@@ -34,6 +55,3 @@ export class HeroesComponent implements OnInit{
         this.router.navigate(['/detail', this.selectedHero.id]);
     }
 }
-
-
-
